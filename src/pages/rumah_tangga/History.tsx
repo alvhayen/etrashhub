@@ -32,7 +32,7 @@ export default function History() {
   });
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100%' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', flex: 1, paddingBottom: '2rem' }}>
       <header style={{ padding: '1.5rem', backgroundColor: '#fff', borderBottom: '1px solid var(--color-border)', position: 'sticky', top: 0, zIndex: 10 }}>
         <h1 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--color-text-primary)', marginBottom: '1rem' }}>Riwayat Jemputan</h1>
         
@@ -42,17 +42,18 @@ export default function History() {
               key={f}
               onClick={() => setFilter(f as any)}
               style={{
+                boxSizing: 'border-box',
                 padding: '0.5rem 1rem',
                 borderRadius: 'var(--radius-full)',
                 fontWeight: 600,
                 fontSize: '0.875rem',
                 textTransform: 'capitalize',
-                border: filter === f ? 'transparent' : '1px solid var(--color-border)',
+                border: filter === f ? '1px solid transparent' : '1px solid var(--color-border)',
                 backgroundColor: filter === f ? 'var(--color-primary)' : '#fff',
                 color: filter === f ? '#fff' : 'var(--color-text-secondary)',
                 cursor: 'pointer',
                 whiteSpace: 'nowrap',
-                transition: 'all 0.2s'
+                transition: 'all 0.2s',
               }}
             >
               {f}

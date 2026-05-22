@@ -14,9 +14,10 @@ export default function MaterialDetail() {
   const [item, setItem] = useState<any>(null);
 
   useEffect(() => {
-    request('GET', `/api/inventory/admin`).then(data => {
-      // Mocking fetch all using admin endpoint for the sake of presentation
-      const found = data.inventory?.find((i: any) => i.id === parseInt(id || '0'));
+    request('GET', `/api/inventory`).then(data => {
+      // Mocking fetch all using public endpoint for the sake of presentation
+      const items = data.inventory || data;
+      const found = (Array.isArray(items) ? items : []).find((i: any) => i.id === parseInt(id || '0'));
       if (found) setItem(found);
     }).catch(console.error);
   }, [id, request]);

@@ -42,10 +42,12 @@ export default function Home() {
     fetchPickups();
     const interval = setInterval(fetchPickups, 15000); // 15s polling
     
-    // Fetch leaderboard
-    request('GET', '/api/leaderboard', undefined, 1).then(data => {
-      if (data && data.leaderboard) setLeaderboard(data.leaderboard);
-    }).catch(console.error);
+    // Mock Leaderboard for now since no backend endpoint exists
+    setLeaderboard([
+      { name: 'Diana R.', points: 15400, badge: 'Gold' },
+      { name: 'Arief B.', points: 12200, badge: 'Silver' },
+      { name: 'Sari M.', points: 9800, badge: 'Bronze' }
+    ]);
     
     return () => clearInterval(interval);
   }, [request, addNotification]);
